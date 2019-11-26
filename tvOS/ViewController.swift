@@ -25,7 +25,7 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import GCDWebServers
+import GCDWebServer
 import UIKit
 
 class ViewController: UIViewController {
