@@ -17,7 +17,7 @@
                BlueprintIdentifier = "CEE28CEE1AE0051F00F4023C"
                BuildableName = "GCDWebServer.framework"
                BlueprintName = "GCDWebServer (iOS)"
-               ReferencedContainer = "container:GCDWebServer Sample.xcodeproj">
+               ReferencedContainer = "container:GCDWebServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,7 +33,7 @@
             BlueprintIdentifier = "CEE28CEE1AE0051F00F4023C"
             BuildableName = "GCDWebServer.framework"
             BlueprintName = "GCDWebServer (iOS)"
-            ReferencedContainer = "container:GCDWebServer Sample.xcodeproj">
+            ReferencedContainer = "container:GCDWebServer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -55,7 +55,7 @@
             BlueprintIdentifier = "CEE28CEE1AE0051F00F4023C"
             BuildableName = "GCDWebServer.framework"
             BlueprintName = "GCDWebServer (iOS)"
-            ReferencedContainer = "container:GCDWebServer Sample.xcodeproj">
+            ReferencedContainer = "container:GCDWebServer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
@@ -71,7 +71,7 @@
             BlueprintIdentifier = "CEE28CEE1AE0051F00F4023C"
             BuildableName = "GCDWebServer.framework"
             BlueprintName = "GCDWebServer (iOS)"
-            ReferencedContainer = "container:GCDWebServer Sample.xcodeproj">
+            ReferencedContainer = "container:GCDWebServer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
