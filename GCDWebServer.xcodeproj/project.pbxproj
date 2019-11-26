@@ -6,21 +6,6 @@
 	objectVersion = 48;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		E274F876187E77D8009E0582 /* Build All */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = E274F879187E77D8009E0582 /* Build configuration list for PBXAggregateTarget "Build All" */;
-			buildPhases = (
-			);
-			dependencies = (
-				CE54F3961AE84FCA003C110E /* PBXTargetDependency */,
-				E2DDD20E1BE69EEE002CE867 /* PBXTargetDependency */,
-			);
-			name = "Build All";
-			productName = "Build All";
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		CEE28CF41AE0051F00F4023C /* GCDWebServers.h in Headers */ = {isa = PBXBuildFile; fileRef = CEE28CF31AE0051F00F4023C /* GCDWebServers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CEE28D0A1AE006C300F4023C /* GCDWebServer.h in Headers */ = {isa = PBXBuildFile; fileRef = E28BAE1618F99C810095C089 /* GCDWebServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,26 +55,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CE54F3951AE84FCA003C110E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CEE28CEE1AE0051F00F4023C;
-			remoteInfo = "GCDWebServers (iOS)";
-		};
 		E24A3C0321E2879000C58878 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CEE28CEE1AE0051F00F4023C;
 			remoteInfo = "GCDWebServers (iOS)";
-		};
-		E2DDD20D1BE69EEE002CE867 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E2DDD1F51BE69EE4002CE867;
-			remoteInfo = "GCDWebServer (iOS)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -418,7 +389,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E274F876187E77D8009E0582 /* Build All */,
 				E2DDD1F51BE69EE4002CE867 /* GCDWebServer Sample (iOS) */,
 				CEE28CEE1AE0051F00F4023C /* GCDWebServer (iOS) */,
 			);
@@ -481,20 +451,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CE54F3961AE84FCA003C110E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CEE28CEE1AE0051F00F4023C /* GCDWebServer (iOS) */;
-			targetProxy = CE54F3951AE84FCA003C110E /* PBXContainerItemProxy */;
-		};
 		E24A3C0421E2879000C58878 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CEE28CEE1AE0051F00F4023C /* GCDWebServer (iOS) */;
 			targetProxy = E24A3C0321E2879000C58878 /* PBXContainerItemProxy */;
-		};
-		E2DDD20E1BE69EEE002CE867 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E2DDD1F51BE69EE4002CE867 /* GCDWebServer Sample (iOS) */;
-			targetProxy = E2DDD20D1BE69EEE002CE867 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -664,20 +624,6 @@
 			};
 			name = Release;
 		};
-		E274F877187E77D8009E0582 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		E274F878187E77D8009E0582 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		E2DDD20B1BE69EE5002CE867 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -725,15 +671,6 @@
 			buildConfigurations = (
 				CEE28D031AE0052000F4023C /* Debug */,
 				CEE28D041AE0052000F4023C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E274F879187E77D8009E0582 /* Build configuration list for PBXAggregateTarget "Build All" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E274F877187E77D8009E0582 /* Debug */,
-				E274F878187E77D8009E0582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
