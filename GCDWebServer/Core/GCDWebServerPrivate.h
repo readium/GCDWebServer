@@ -134,22 +134,22 @@ extern void GCDWebServerLogMessage(GCDWebServerLoggingLevel level, NSString* _No
 
 #if !defined(GWS_DCHECK) || !defined(GWS_DNOT_REACHED)
 
-#if DEBUG
-
-#define GWS_DCHECK(__CONDITION__) \
-  do {                            \
-    if (!(__CONDITION__)) {       \
-      abort();                    \
-    }                             \
-  } while (0)
-#define GWS_DNOT_REACHED() abort()
-
-#else
+//#if DEBUG
+//
+//#define GWS_DCHECK(__CONDITION__) \
+//  do {                            \
+//    if (!(__CONDITION__)) {       \
+//      abort();                    \
+//    }                             \
+//  } while (0)
+//#define GWS_DNOT_REACHED() abort()
+//
+//#else
 
 #define GWS_DCHECK(__CONDITION__)
 #define GWS_DNOT_REACHED()
 
-#endif
+//#endif
 
 #endif
 
