@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1030"
+   LastUpgradeVersion = "1120"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CEE28CEE1AE0051F00F4023C"
-               BuildableName = "GCDWebServers.framework"
-               BlueprintName = "GCDWebServers (iOS)"
-               ReferencedContainer = "container:GCDWebServer.xcodeproj">
+               BuildableName = "GCDWebServer.framework"
+               BlueprintName = "GCDWebServer (iOS)"
+               ReferencedContainer = "container:GCDWebServer Sample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,19 +27,17 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CEE28CEE1AE0051F00F4023C"
-            BuildableName = "GCDWebServers.framework"
-            BlueprintName = "GCDWebServers (iOS)"
-            ReferencedContainer = "container:GCDWebServer.xcodeproj">
+            BuildableName = "GCDWebServer.framework"
+            BlueprintName = "GCDWebServer (iOS)"
+            ReferencedContainer = "container:GCDWebServer Sample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -55,13 +53,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CEE28CEE1AE0051F00F4023C"
-            BuildableName = "GCDWebServers.framework"
-            BlueprintName = "GCDWebServers (iOS)"
-            ReferencedContainer = "container:GCDWebServer.xcodeproj">
+            BuildableName = "GCDWebServer.framework"
+            BlueprintName = "GCDWebServer (iOS)"
+            ReferencedContainer = "container:GCDWebServer Sample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -73,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CEE28CEE1AE0051F00F4023C"
-            BuildableName = "GCDWebServers.framework"
-            BlueprintName = "GCDWebServers (iOS)"
-            ReferencedContainer = "container:GCDWebServer.xcodeproj">
+            BuildableName = "GCDWebServer.framework"
+            BlueprintName = "GCDWebServer (iOS)"
+            ReferencedContainer = "container:GCDWebServer Sample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
