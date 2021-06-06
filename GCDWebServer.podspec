@@ -7,13 +7,13 @@
 
 Pod::Spec.new do |s|
   s.name     = 'GCDWebServer'
-  s.version  = '3.6.2'
+  s.version  = '3.7.0'
   s.author   =  { 'Pierre-Olivier Latour' => 'info@pol-online.net' }
   s.license  = { :type => 'BSD', :file => 'LICENSE' }
-  s.homepage = 'https://github.com/edrlab/GCDWebServer'
+  s.homepage = 'https://github.com/readium/GCDWebServer'
   s.summary  = 'Lightweight GCD based HTTP server for OS X & iOS (includes web based uploader & WebDAV server)'
   
-  s.source   = { :git => 'https://github.com/edrlab/GCDWebServer.git', :tag => s.version.to_s }
+  s.source   = { :git => 'https://github.com/readium/GCDWebServer.git', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
   s.requires_arc = true
   
