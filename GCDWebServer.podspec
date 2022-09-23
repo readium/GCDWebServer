@@ -7,7 +7,7 @@
 
 Pod::Spec.new do |s|
   s.name     = 'GCDWebServer'
-  s.version  = '3.7.2'
+  s.version  = '3.7.3'
   s.author   =  { 'Pierre-Olivier Latour' => 'info@pol-online.net' }
   s.license  = { :type => 'BSD', :file => 'LICENSE' }
   s.homepage = 'https://github.com/readium/GCDWebServer'
@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
   
   s.subspec 'Core' do |cs|
     cs.source_files = 'GCDWebServer/**/*.{h,m}'
+    cs.exclude_files = 'GCDWebServer/include/*'
     cs.requires_arc = true
     cs.ios.library = 'z'
     cs.ios.frameworks = 'MobileCoreServices', 'CFNetwork'
