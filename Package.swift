@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "GCDWebServer",
+    platforms: [.iOS(.v11)],
     products: [
         .library(name: "GCDWebServer", targets: ["GCDWebServer"]),
     ],
