@@ -84,7 +84,7 @@ NS_ASSUME_NONNULL_END
 
   CFHTTPMessageRef _requestMessage;
   GCDWebServerRequest* _request;
-  GCDWebServerHandler* _handler;
+  GCDWebServerHandler* _handler; // this is where the response is received
   CFHTTPMessageRef _responseMessage;
   GCDWebServerResponse* _response;
   NSInteger _statusCode;
@@ -759,6 +759,7 @@ static inline NSUInteger _ScanHexNumber(const void* bytes, NSUInteger size) {
 
 - (void)processRequest:(GCDWebServerRequest*)request completion:(GCDWebServerCompletionBlock)completion {
   GWS_LOG_DEBUG(@"Connection on socket %i processing request \"%@ %@\" with %lu bytes body", _socket, _virtualHEAD ? @"HEAD" : _request.method, _request.path, (unsigned long)_totalBytesRead);
+  // `completion` will receive the `GCDWebServerResponse` object
   _handler.asyncProcessBlock(request, [completion copy]);
 }
 

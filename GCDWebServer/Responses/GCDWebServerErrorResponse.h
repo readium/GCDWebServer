@@ -59,6 +59,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)responseWithServerError:(GCDWebServerServerErrorHTTPStatusCode)errorCode underlyingError:(nullable NSError*)underlyingError message:(NSString*)format, ... NS_FORMAT_FUNCTION(3, 4);
 
 /**
+ *  Initializes an empty response with a specific HTTP status code and error.
+ */
+- (instancetype)initWithStatusCode:(NSInteger)statusCode error:(NSError*)error;
+
+/**
  *  Initializes a client error response with the corresponding HTTP status code.
  */
 - (instancetype)initWithClientError:(GCDWebServerClientErrorHTTPStatusCode)errorCode message:(NSString*)format, ... NS_FORMAT_FUNCTION(2, 3);
