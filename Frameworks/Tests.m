@@ -9,35 +9,35 @@
 @implementation Tests
 
 - (void)testWebServer {
-  GCDWebServer* server = [[GCDWebServer alloc] init];
+  ReadiumGCDWebServer* server = [[ReadiumGCDWebServer alloc] init];
   XCTAssertNotNil(server);
 }
 
 - (void)testDAVServer {
-  GCDWebDAVServer* server = [[GCDWebDAVServer alloc] init];
+  ReadiumGCDWebDAVServer* server = [[ReadiumGCDWebDAVServer alloc] init];
   XCTAssertNotNil(server);
 }
 
 - (void)testWebUploader {
-  GCDWebUploader* server = [[GCDWebUploader alloc] init];
+  ReadiumGCDWebUploader* server = [[ReadiumGCDWebUploader alloc] init];
   XCTAssertNotNil(server);
 }
 
 - (void)testPaths {
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@""), @"");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"/foo/"), @"/foo");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"foo/bar"), @"foo/bar");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"foo//bar"), @"foo/bar");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"foo/bar//"), @"foo/bar");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"foo/./bar"), @"foo/bar");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"foo/bar/."), @"foo/bar");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"foo/../bar"), @"bar");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"/foo/../bar"), @"/bar");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"/foo/.."), @"/");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"/.."), @"/");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"."), @"");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@".."), @"");
-  XCTAssertEqualObjects(GCDWebServerNormalizePath(@"../.."), @"");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@""), @"");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"/foo/"), @"/foo");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"foo/bar"), @"foo/bar");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"foo//bar"), @"foo/bar");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"foo/bar//"), @"foo/bar");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"foo/./bar"), @"foo/bar");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"foo/bar/."), @"foo/bar");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"foo/../bar"), @"bar");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"/foo/../bar"), @"/bar");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"/foo/.."), @"/");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"/.."), @"/");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"."), @"");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@".."), @"");
+  XCTAssertEqualObjects(ReadiumGCDWebServerNormalizePath(@"../.."), @"");
 }
 
 @end
