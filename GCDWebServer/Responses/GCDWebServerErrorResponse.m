@@ -35,7 +35,9 @@
 #import "GCDWebServerPrivate.h"
 #endif
 
-@implementation GCDWebServerErrorResponse
+@implementation GCDWebServerErrorResponse {
+    NSError *_error;
+}
 
 + (instancetype)responseWithClientError:(GCDWebServerClientErrorHTTPStatusCode)errorCode message:(NSString*)format, ... {
   GWS_DCHECK(((NSInteger)errorCode >= 400) && ((NSInteger)errorCode < 500));
@@ -85,6 +87,13 @@ static inline NSString* _EscapeHTMLString(NSString* string) {
                                               title, title, _EscapeHTMLString(message), error];
   if ((self = [self initWithHTML:html])) {
     self.statusCode = statusCode;
+  }
+  return self;
+}
+
+- (instancetype)initWithStatusCode:(NSInteger)statusCode error:(NSError*)error {
+  if ((self = [super initWithStatusCode:statusCode])) {
+    _error = error;
   }
   return self;
 }
