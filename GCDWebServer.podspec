@@ -6,8 +6,8 @@
 # DELETE THIS SECTION BEFORE PROCEEDING!
 
 Pod::Spec.new do |s|
-  s.name     = 'GCDWebServer'
-  s.version  = '3.7.5'
+  s.name     = 'ReadiumGCDWebServer'
+  s.version  = '4.0.0'
   s.author   =  { 'Pierre-Olivier Latour' => 'info@pol-online.net' }
   s.license  = { :type => 'BSD', :file => 'LICENSE' }
   s.homepage = 'https://github.com/readium/GCDWebServer'

@@ -49,7 +49,7 @@
 
 /* Begin PBXFileReference section */
 		CA91838328B8E10100ACD424 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
-		CEE28CEF1AE0051F00F4023C /* GCDWebServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCDWebServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE28CEF1AE0051F00F4023C /* ReadiumGCDWebServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReadiumGCDWebServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE28CF21AE0051F00F4023C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEE28CF31AE0051F00F4023C /* GCDWebServers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDWebServers.h; sourceTree = "<group>"; };
 		CEE28D691AE1ABAA00F4023C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -135,7 +135,7 @@
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CEE28CEF1AE0051F00F4023C /* GCDWebServer.framework */,
+				CEE28CEF1AE0051F00F4023C /* ReadiumGCDWebServer.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,7 +300,7 @@
 			);
 			name = "GCDWebServer (iOS)";
 			productName = GCDWebServers;
-			productReference = CEE28CEF1AE0051F00F4023C /* GCDWebServer.framework */;
+			productReference = CEE28CEF1AE0051F00F4023C /* ReadiumGCDWebServer.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -510,7 +510,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = Frameworks/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = "${PRODUCT_BUNDLE_IDENTIFIER}";
-				PRODUCT_NAME = GCDWebServer;
+				PRODUCT_NAME = ReadiumGCDWebServer;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -529,7 +529,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = Frameworks/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = "${PRODUCT_BUNDLE_IDENTIFIER}";
-				PRODUCT_NAME = GCDWebServer;
+				PRODUCT_NAME = ReadiumGCDWebServer;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

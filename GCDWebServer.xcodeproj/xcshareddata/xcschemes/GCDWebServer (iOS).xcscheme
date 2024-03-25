@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CEE28CEE1AE0051F00F4023C"
-               BuildableName = "GCDWebServer.framework"
+               BuildableName = "ReadiumGCDWebServer.framework"
                BlueprintName = "GCDWebServer (iOS)"
                ReferencedContainer = "container:GCDWebServer.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CEE28CEE1AE0051F00F4023C"
-            BuildableName = "GCDWebServer.framework"
+            BuildableName = "ReadiumGCDWebServer.framework"
             BlueprintName = "GCDWebServer (iOS)"
             ReferencedContainer = "container:GCDWebServer.xcodeproj">
          </BuildableReference>
