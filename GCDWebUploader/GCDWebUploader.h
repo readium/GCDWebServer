@@ -29,54 +29,54 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class GCDWebUploader;
+@class ReadiumGCDWebUploader;
 
 /**
- *  Delegate methods for GCDWebUploader.
+ *  Delegate methods for ReadiumGCDWebUploader.
  *
  *  @warning These methods are always called on the main thread in a serialized way.
  */
-@protocol GCDWebUploaderDelegate <GCDWebServerDelegate>
+@protocol ReadiumGCDWebUploaderDelegate <ReadiumGCDWebServerDelegate>
 @optional
 
 /**
  *  This method is called whenever a file has been downloaded.
  */
-- (void)webUploader:(GCDWebUploader*)uploader didDownloadFileAtPath:(NSString*)path;
+- (void)webUploader:(ReadiumGCDWebUploader*)uploader didDownloadFileAtPath:(NSString*)path;
 
 /**
  *  This method is called whenever a file has been uploaded.
  */
-- (void)webUploader:(GCDWebUploader*)uploader didUploadFileAtPath:(NSString*)path;
+- (void)webUploader:(ReadiumGCDWebUploader*)uploader didUploadFileAtPath:(NSString*)path;
 
 /**
  *  This method is called whenever a file or directory has been moved.
  */
-- (void)webUploader:(GCDWebUploader*)uploader didMoveItemFromPath:(NSString*)fromPath toPath:(NSString*)toPath;
+- (void)webUploader:(ReadiumGCDWebUploader*)uploader didMoveItemFromPath:(NSString*)fromPath toPath:(NSString*)toPath;
 
 /**
  *  This method is called whenever a file or directory has been deleted.
  */
-- (void)webUploader:(GCDWebUploader*)uploader didDeleteItemAtPath:(NSString*)path;
+- (void)webUploader:(ReadiumGCDWebUploader*)uploader didDeleteItemAtPath:(NSString*)path;
 
 /**
  *  This method is called whenever a directory has been created.
  */
-- (void)webUploader:(GCDWebUploader*)uploader didCreateDirectoryAtPath:(NSString*)path;
+- (void)webUploader:(ReadiumGCDWebUploader*)uploader didCreateDirectoryAtPath:(NSString*)path;
 
 @end
 
 /**
- *  The GCDWebUploader subclass of GCDWebServer implements an HTML 5 web browser
+ *  The ReadiumGCDWebUploader subclass of ReadiumGCDWebServer implements an HTML 5 web browser
  *  interface for uploading or downloading files, and moving or deleting files
  *  or directories.
  *
- *  See the README.md file for more information about the features of GCDWebUploader.
+ *  See the README.md file for more information about the features of ReadiumGCDWebUploader.
  *
- *  @warning For GCDWebUploader to work, "GCDWebUploader.bundle" must be added
+ *  @warning For ReadiumGCDWebUploader to work, "ReadiumGCDWebUploader.bundle" must be added
  *  to the resources of the Xcode target.
  */
-@interface GCDWebUploader : GCDWebServer
+@interface ReadiumGCDWebUploader : ReadiumGCDWebServer
 
 /**
  *  Returns the upload directory as specified when the uploader was initialized.
@@ -86,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Sets the delegate for the uploader.
  */
-@property(nonatomic, weak, nullable) id<GCDWebUploaderDelegate> delegate;
+@property(nonatomic, weak, nullable) id<ReadiumGCDWebUploaderDelegate> delegate;
 
 /**
  *  Sets which files are allowed to be operated on depending on their extension.
@@ -161,11 +161,11 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 /**
- *  Hooks to customize the behavior of GCDWebUploader.
+ *  Hooks to customize the behavior of ReadiumGCDWebUploader.
  *
  *  @warning These methods can be called on any GCD thread.
  */
-@interface GCDWebUploader (Subclassing)
+@interface ReadiumGCDWebUploader (Subclassing)
 
 /**
  *  This method is called to check if a file upload is allowed to complete.

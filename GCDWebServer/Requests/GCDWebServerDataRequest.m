@@ -26,7 +26,7 @@
  */
 
 #if !__has_feature(objc_arc)
-#error GCDWebServer requires ARC
+#error ReadiumGCDWebServer requires ARC
 #endif
 
 #ifdef SWIFT_PACKAGE
@@ -35,11 +35,11 @@
 #import "GCDWebServerPrivate.h"
 #endif
 
-@interface GCDWebServerDataRequest ()
+@interface ReadiumGCDWebServerDataRequest ()
 @property(nonatomic) NSMutableData* data;
 @end
 
-@implementation GCDWebServerDataRequest {
+@implementation ReadiumGCDWebServerDataRequest {
   NSString* _text;
   id _jsonObject;
 }
@@ -72,20 +72,20 @@
   NSMutableString* description = [NSMutableString stringWithString:[super description]];
   if (_data) {
     [description appendString:@"\n\n"];
-    [description appendString:GCDWebServerDescribeData(_data, (NSString*)self.contentType)];
+    [description appendString:ReadiumGCDWebServerDescribeData(_data, (NSString*)self.contentType)];
   }
   return description;
 }
 
 @end
 
-@implementation GCDWebServerDataRequest (Extensions)
+@implementation ReadiumGCDWebServerDataRequest (Extensions)
 
 - (NSString*)text {
   if (_text == nil) {
     if ([self.contentType hasPrefix:@"text/"]) {
-      NSString* charset = GCDWebServerExtractHeaderValueParameter(self.contentType, @"charset");
-      _text = [[NSString alloc] initWithData:self.data encoding:GCDWebServerStringEncodingFromCharset(charset)];
+      NSString* charset = ReadiumGCDWebServerExtractHeaderValueParameter(self.contentType, @"charset");
+      _text = [[NSString alloc] initWithData:self.data encoding:ReadiumGCDWebServerStringEncodingFromCharset(charset)];
     } else {
       GWS_DNOT_REACHED();
     }
@@ -95,7 +95,7 @@
 
 - (id)jsonObject {
   if (_jsonObject == nil) {
-    NSString* mimeType = GCDWebServerTruncateHeaderValue(self.contentType);
+    NSString* mimeType = ReadiumGCDWebServerTruncateHeaderValue(self.contentType);
     if ([mimeType isEqualToString:@"application/json"] || [mimeType isEqualToString:@"text/json"] || [mimeType isEqualToString:@"text/javascript"]) {
       _jsonObject = [NSJSONSerialization JSONObjectWithData:_data options:0 error:NULL];
     } else {

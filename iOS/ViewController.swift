@@ -25,24 +25,24 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import GCDWebServer
+import ReadiumGCDWebServer
 import UIKit
 
 class ViewController: UIViewController {
   @IBOutlet var label: UILabel?
-  var webServer: GCDWebUploader!
+  var webServer: ReadiumGCDWebUploader!
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
     let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-    webServer = GCDWebUploader(uploadDirectory: documentsPath)
+    webServer = ReadiumGCDWebUploader(uploadDirectory: documentsPath)
     webServer.delegate = self
     webServer.allowHiddenItems = true
     if webServer.start() {
-      label?.text = "GCDWebServer running locally on port \(webServer.port)"
+      label?.text = "ReadiumGCDWebServer running locally on port \(webServer.port)"
     } else {
-      label?.text = "GCDWebServer not running!"
+      label?.text = "ReadiumGCDWebServer not running!"
     }
   }
 
@@ -54,24 +54,24 @@ class ViewController: UIViewController {
   }
 }
 
-extension ViewController: GCDWebUploaderDelegate {
-  func webUploader(_: GCDWebUploader, didUploadFileAtPath path: String) {
+extension ViewController: ReadiumGCDWebUploaderDelegate {
+  func webUploader(_: ReadiumGCDWebUploader, didUploadFileAtPath path: String) {
     print("[UPLOAD] \(path)")
   }
 
-  func webUploader(_: GCDWebUploader, didDownloadFileAtPath path: String) {
+  func webUploader(_: ReadiumGCDWebUploader, didDownloadFileAtPath path: String) {
     print("[DOWNLOAD] \(path)")
   }
 
-  func webUploader(_: GCDWebUploader, didMoveItemFromPath fromPath: String, toPath: String) {
+  func webUploader(_: ReadiumGCDWebUploader, didMoveItemFromPath fromPath: String, toPath: String) {
     print("[MOVE] \(fromPath) -> \(toPath)")
   }
 
-  func webUploader(_: GCDWebUploader, didCreateDirectoryAtPath path: String) {
+  func webUploader(_: ReadiumGCDWebUploader, didCreateDirectoryAtPath path: String) {
     print("[CREATE] \(path)")
   }
 
-  func webUploader(_: GCDWebUploader, didDeleteItemAtPath path: String) {
+  func webUploader(_: ReadiumGCDWebUploader, didDeleteItemAtPath path: String) {
     print("[DELETE] \(path)")
   }
 }

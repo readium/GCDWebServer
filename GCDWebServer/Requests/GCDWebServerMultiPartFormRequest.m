@@ -26,7 +26,7 @@
  */
 
 #if !__has_feature(objc_arc)
-#error GCDWebServer requires ARC
+#error ReadiumGCDWebServer requires ARC
 #endif
 
 #ifdef SWIFT_PACKAGE
@@ -45,35 +45,35 @@ typedef enum {
   kParserState_End
 } ParserState;
 
-@interface GCDWebServerMIMEStreamParser : NSObject
+@interface ReadiumGCDWebServerMIMEStreamParser : NSObject
 @end
 
 static NSData* _newlineData = nil;
 static NSData* _newlinesData = nil;
 static NSData* _dashNewlineData = nil;
 
-@implementation GCDWebServerMultiPart
+@implementation ReadiumGCDWebServerMultiPart
 
 - (instancetype)initWithControlName:(NSString* _Nonnull)name contentType:(NSString* _Nonnull)type {
   if ((self = [super init])) {
     _controlName = [name copy];
     _contentType = [type copy];
-    _mimeType = (NSString*)GCDWebServerTruncateHeaderValue(_contentType);
+    _mimeType = (NSString*)ReadiumGCDWebServerTruncateHeaderValue(_contentType);
   }
   return self;
 }
 
 @end
 
-@implementation GCDWebServerMultiPartArgument
+@implementation ReadiumGCDWebServerMultiPartArgument
 
 - (instancetype)initWithControlName:(NSString* _Nonnull)name contentType:(NSString* _Nonnull)type data:(NSData* _Nonnull)data {
   if ((self = [super initWithControlName:name contentType:type])) {
     _data = data;
 
     if ([self.contentType hasPrefix:@"text/"]) {
-      NSString* charset = GCDWebServerExtractHeaderValueParameter(self.contentType, @"charset");
-      _string = [[NSString alloc] initWithData:_data encoding:GCDWebServerStringEncodingFromCharset(charset)];
+      NSString* charset = ReadiumGCDWebServerExtractHeaderValueParameter(self.contentType, @"charset");
+      _string = [[NSString alloc] initWithData:_data encoding:ReadiumGCDWebServerStringEncodingFromCharset(charset)];
     }
   }
   return self;
@@ -85,7 +85,7 @@ static NSData* _dashNewlineData = nil;
 
 @end
 
-@implementation GCDWebServerMultiPartFile
+@implementation ReadiumGCDWebServerMultiPartFile
 
 - (instancetype)initWithControlName:(NSString* _Nonnull)name contentType:(NSString* _Nonnull)type fileName:(NSString* _Nonnull)fileName temporaryPath:(NSString* _Nonnull)temporaryPath {
   if ((self = [super initWithControlName:name contentType:type])) {
@@ -105,20 +105,20 @@ static NSData* _dashNewlineData = nil;
 
 @end
 
-@implementation GCDWebServerMIMEStreamParser {
+@implementation ReadiumGCDWebServerMIMEStreamParser {
   NSData* _boundary;
   NSString* _defaultcontrolName;
   ParserState _state;
   NSMutableData* _data;
-  NSMutableArray<GCDWebServerMultiPartArgument*>* _arguments;
-  NSMutableArray<GCDWebServerMultiPartFile*>* _files;
+  NSMutableArray<ReadiumGCDWebServerMultiPartArgument*>* _arguments;
+  NSMutableArray<ReadiumGCDWebServerMultiPartFile*>* _files;
 
   NSString* _controlName;
   NSString* _fileName;
   NSString* _contentType;
   NSString* _tmpPath;
   int _tmpFile;
-  GCDWebServerMIMEStreamParser* _subParser;
+  ReadiumGCDWebServerMIMEStreamParser* _subParser;
 }
 
 + (void)initialize {
@@ -136,7 +136,7 @@ static NSData* _dashNewlineData = nil;
   }
 }
 
-- (instancetype)initWithBoundary:(NSString* _Nonnull)boundary defaultControlName:(NSString* _Nullable)name arguments:(NSMutableArray<GCDWebServerMultiPartArgument*>* _Nonnull)arguments files:(NSMutableArray<GCDWebServerMultiPartFile*>* _Nonnull)files {
+- (instancetype)initWithBoundary:(NSString* _Nonnull)boundary defaultControlName:(NSString* _Nullable)name arguments:(NSMutableArray<ReadiumGCDWebServerMultiPartArgument*>* _Nonnull)arguments files:(NSMutableArray<ReadiumGCDWebServerMultiPartFile*>* _Nonnull)files {
   NSData* data = boundary.length ? [[NSString stringWithFormat:@"--%@", boundary] dataUsingEncoding:NSASCIIStringEncoding] : nil;
   if (data == nil) {
     GWS_DNOT_REACHED();
@@ -180,15 +180,15 @@ static NSData* _dashNewlineData = nil;
             NSString* name = [header substringToIndex:subRange.location];
             NSString* value = [[header substringFromIndex:(subRange.location + subRange.length)] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             if ([name caseInsensitiveCompare:@"Content-Type"] == NSOrderedSame) {
-              _contentType = GCDWebServerNormalizeHeaderValue(value);
+              _contentType = ReadiumGCDWebServerNormalizeHeaderValue(value);
             } else if ([name caseInsensitiveCompare:@"Content-Disposition"] == NSOrderedSame) {
-              NSString* contentDisposition = GCDWebServerNormalizeHeaderValue(value);
-              if ([GCDWebServerTruncateHeaderValue(contentDisposition) isEqualToString:@"form-data"]) {
-                _controlName = GCDWebServerExtractHeaderValueParameter(contentDisposition, @"name");
-                _fileName = GCDWebServerExtractHeaderValueParameter(contentDisposition, @"filename");
-              } else if ([GCDWebServerTruncateHeaderValue(contentDisposition) isEqualToString:@"file"]) {
+              NSString* contentDisposition = ReadiumGCDWebServerNormalizeHeaderValue(value);
+              if ([ReadiumGCDWebServerTruncateHeaderValue(contentDisposition) isEqualToString:@"form-data"]) {
+                _controlName = ReadiumGCDWebServerExtractHeaderValueParameter(contentDisposition, @"name");
+                _fileName = ReadiumGCDWebServerExtractHeaderValueParameter(contentDisposition, @"filename");
+              } else if ([ReadiumGCDWebServerTruncateHeaderValue(contentDisposition) isEqualToString:@"file"]) {
                 _controlName = _defaultcontrolName;
-                _fileName = GCDWebServerExtractHeaderValueParameter(contentDisposition, @"filename");
+                _fileName = ReadiumGCDWebServerExtractHeaderValueParameter(contentDisposition, @"filename");
               }
             }
           } else {
@@ -203,9 +203,9 @@ static NSData* _dashNewlineData = nil;
         GWS_DNOT_REACHED();
       }
       if (_controlName) {
-        if ([GCDWebServerTruncateHeaderValue(_contentType) isEqualToString:@"multipart/mixed"]) {
-          NSString* boundary = GCDWebServerExtractHeaderValueParameter(_contentType, @"boundary");
-          _subParser = [[GCDWebServerMIMEStreamParser alloc] initWithBoundary:boundary defaultControlName:_controlName arguments:_arguments files:_files];
+        if ([ReadiumGCDWebServerTruncateHeaderValue(_contentType) isEqualToString:@"multipart/mixed"]) {
+          NSString* boundary = ReadiumGCDWebServerExtractHeaderValueParameter(_contentType, @"boundary");
+          _subParser = [[ReadiumGCDWebServerMIMEStreamParser alloc] initWithBoundary:boundary defaultControlName:_controlName arguments:_arguments files:_files];
           if (_subParser == nil) {
             GWS_DNOT_REACHED();
             success = NO;
@@ -251,7 +251,7 @@ static NSData* _dashNewlineData = nil;
             if (result == (ssize_t)dataLength) {
               if (close(_tmpFile) == 0) {
                 _tmpFile = 0;
-                GCDWebServerMultiPartFile* file = [[GCDWebServerMultiPartFile alloc] initWithControlName:_controlName contentType:_contentType fileName:_fileName temporaryPath:_tmpPath];
+                ReadiumGCDWebServerMultiPartFile* file = [[ReadiumGCDWebServerMultiPartFile alloc] initWithControlName:_controlName contentType:_contentType fileName:_fileName temporaryPath:_tmpPath];
                 [_files addObject:file];
               } else {
                 GWS_DNOT_REACHED();
@@ -264,7 +264,7 @@ static NSData* _dashNewlineData = nil;
             _tmpPath = nil;
           } else {
             NSData* data = [[NSData alloc] initWithBytes:(void*)dataBytes length:dataLength];
-            GCDWebServerMultiPartArgument* argument = [[GCDWebServerMultiPartArgument alloc] initWithControlName:_controlName contentType:_contentType data:data];
+            ReadiumGCDWebServerMultiPartArgument* argument = [[ReadiumGCDWebServerMultiPartArgument alloc] initWithControlName:_controlName contentType:_contentType data:data];
             [_arguments addObject:argument];
           }
         }
@@ -315,13 +315,13 @@ static NSData* _dashNewlineData = nil;
 
 @end
 
-@interface GCDWebServerMultiPartFormRequest ()
-@property(nonatomic) NSMutableArray<GCDWebServerMultiPartArgument*>* arguments;
-@property(nonatomic) NSMutableArray<GCDWebServerMultiPartFile*>* files;
+@interface ReadiumGCDWebServerMultiPartFormRequest ()
+@property(nonatomic) NSMutableArray<ReadiumGCDWebServerMultiPartArgument*>* arguments;
+@property(nonatomic) NSMutableArray<ReadiumGCDWebServerMultiPartFile*>* files;
 @end
 
-@implementation GCDWebServerMultiPartFormRequest {
-  GCDWebServerMIMEStreamParser* _parser;
+@implementation ReadiumGCDWebServerMultiPartFormRequest {
+  ReadiumGCDWebServerMIMEStreamParser* _parser;
 }
 
 + (NSString*)mimeType {
@@ -337,8 +337,8 @@ static NSData* _dashNewlineData = nil;
 }
 
 - (BOOL)open:(NSError**)error {
-  NSString* boundary = GCDWebServerExtractHeaderValueParameter(self.contentType, @"boundary");
-  _parser = [[GCDWebServerMIMEStreamParser alloc] initWithBoundary:boundary defaultControlName:nil arguments:_arguments files:_files];
+  NSString* boundary = ReadiumGCDWebServerExtractHeaderValueParameter(self.contentType, @"boundary");
+  _parser = [[ReadiumGCDWebServerMIMEStreamParser alloc] initWithBoundary:boundary defaultControlName:nil arguments:_arguments files:_files];
   if (_parser == nil) {
     if (error) {
       *error = [NSError errorWithDomain:kGCDWebServerErrorDomain code:-1 userInfo:@{NSLocalizedDescriptionKey : @"Failed starting to parse multipart form data"}];
@@ -370,8 +370,8 @@ static NSData* _dashNewlineData = nil;
   return YES;
 }
 
-- (GCDWebServerMultiPartArgument*)firstArgumentForControlName:(NSString*)name {
-  for (GCDWebServerMultiPartArgument* argument in _arguments) {
+- (ReadiumGCDWebServerMultiPartArgument*)firstArgumentForControlName:(NSString*)name {
+  for (ReadiumGCDWebServerMultiPartArgument* argument in _arguments) {
     if ([argument.controlName isEqualToString:name]) {
       return argument;
     }
@@ -379,8 +379,8 @@ static NSData* _dashNewlineData = nil;
   return nil;
 }
 
-- (GCDWebServerMultiPartFile*)firstFileForControlName:(NSString*)name {
-  for (GCDWebServerMultiPartFile* file in _files) {
+- (ReadiumGCDWebServerMultiPartFile*)firstFileForControlName:(NSString*)name {
+  for (ReadiumGCDWebServerMultiPartFile* file in _files) {
     if ([file.controlName isEqualToString:name]) {
       return file;
     }
@@ -392,14 +392,14 @@ static NSData* _dashNewlineData = nil;
   NSMutableString* description = [NSMutableString stringWithString:[super description]];
   if (_arguments.count) {
     [description appendString:@"\n"];
-    for (GCDWebServerMultiPartArgument* argument in _arguments) {
+    for (ReadiumGCDWebServerMultiPartArgument* argument in _arguments) {
       [description appendFormat:@"\n%@ (%@)\n", argument.controlName, argument.contentType];
-      [description appendString:GCDWebServerDescribeData(argument.data, argument.contentType)];
+      [description appendString:ReadiumGCDWebServerDescribeData(argument.data, argument.contentType)];
     }
   }
   if (_files.count) {
     [description appendString:@"\n"];
-    for (GCDWebServerMultiPartFile* file in _files) {
+    for (ReadiumGCDWebServerMultiPartFile* file in _files) {
       [description appendFormat:@"\n%@ (%@): %@\n{%@}", file.controlName, file.contentType, file.fileName, file.temporaryPath];
     }
   }
